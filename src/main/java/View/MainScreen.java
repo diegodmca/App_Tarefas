@@ -1,14 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package View;
+
+import Controller.ProjetoController;
+import Controller.TarefaController;
+
+
 
 /**
  *
  * @author diegocarvalho
  */
 public class MainScreen extends javax.swing.JFrame {
+    
+    ProjetoController projetoController = new ProjetoController();
+    TarefaController tarefaController = new TarefaController();
+    
+    
 
     /**
      * Creates new form MainScreen
@@ -196,4 +203,18 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+
+public void initDataController(){
+    projetoController = new ProjetoController();
+    tarefaController = new TarefaController();
+    
+}
+
+public void carregaProjetos(){
+    
+}
+
+
+
 }

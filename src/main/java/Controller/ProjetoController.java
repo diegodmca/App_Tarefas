@@ -57,6 +57,7 @@ public class ProjetoController {
             statement.setString(2, projetos.getDescricao());
             statement.setDate(3, new Date(projetos.getCriadoEm().getTime()));
             statement.setDate(4, new Date(projetos.getAtualizadoEm().getTime()));
+            statement.setInt(5, projetos.getId());
             
         }catch (Exception ex) {
             throw new RuntimeException("Erro ao atualizar as informacoes", ex);
@@ -88,11 +89,14 @@ public class ProjetoController {
     public List<Projetos> todosProjetos(){
        String sql = "SELECT * FROM projects";
         
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
+       
         //Lista de projetos que sera devolvida
         List<Projetos> listaProjetos = new ArrayList<Projetos>();
+        
+         Connection connection = null;
+         PreparedStatement statement = null;
+         ResultSet resultSet = null;
+        
         
         try {
             connection = credenciaisBd.getConnection();
@@ -113,6 +117,9 @@ public class ProjetoController {
             }
         }catch(Exception ex) {
             throw new RuntimeException("Erro ao atualizar a lista de projetos", ex);
+        }finally {
+            credenciaisBd.closeConnection(connection, statement);
+            
         }
         return listaProjetos;
             }
